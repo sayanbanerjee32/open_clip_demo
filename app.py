@@ -52,7 +52,7 @@ with gr.Blocks() as demo:
     gr.HTML("<h1 align = 'center'> Image Search </h1>")
     gr.HTML("<h4 align = 'center'> Identify the most suitable image for description provided.</h4>")
     
-     with gr.Row():
+    with gr.Row():
         with gr.Column(scale=2):
             gr.Gallery(value = original_images,
             label="Images to search from", show_label=True, elem_id="gallery"
