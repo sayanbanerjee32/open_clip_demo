@@ -52,29 +52,32 @@ with gr.Blocks() as demo:
     gr.HTML("<h1 align = 'center'> Image Search </h1>")
     gr.HTML("<h4 align = 'center'> Identify the most suitable image for description provided.</h4>")
     
-    gr.Gallery(value = original_images,
-        label="Images to search from", show_label=True, elem_id="gallery"
-        , columns=[3], rows=[3], object_fit="contain", height="auto")
+     with gr.Row():
+        with gr.Column(scale=2):
+            gr.Gallery(value = original_images,
+            label="Images to search from", show_label=True, elem_id="gallery"
+            , columns=[3], rows=[3], object_fit="contain", height="auto")
     
-    content = gr.Textbox(label = "Enter search text here")
-    inputs = [
-            content,
-            ]
-    gr.Examples(["Page of text about segmentation",
-                "Facial photo of a tabby cat",
-                "Portrait of an astronaut with the American flag",
-                "Rocket standing on a launchpad",
-                "Red motorcycle standing in a garage",
-                "Person looking at a camera on a tripod",
-                "Black-and-white silhouette of a horse",
-                "Cup of coffee on a saucer",
-                 "A snake in the background"], 
-                inputs = inputs)
-    
-    generate_btn = gr.Button(value = 'Identify')
-    outputs  = [gr.Image(label = "Is this the image you are referring to?",
-                         height = 512, width = 512)]
-    generate_btn.click(fn = identify_image, inputs= inputs, outputs = outputs)
+        with gr.Column(scale=2):
+            content = gr.Textbox(label = "Enter search text here")
+            inputs = [
+                    content,
+                    ]
+            gr.Examples(["Page of text about segmentation",
+                        "Facial photo of a tabby cat",
+                        "Portrait of an astronaut with the American flag",
+                        "Rocket standing on a launchpad",
+                        "Red motorcycle standing in a garage",
+                        "Person looking at a camera on a tripod",
+                        "Black-and-white silhouette of a horse",
+                        "Cup of coffee on a saucer",
+                        "A snake in the background"], 
+                        inputs = inputs)
+            
+            generate_btn = gr.Button(value = 'Identify')
+            outputs  = [gr.Image(label = "Is this the image you are referring to?",
+                                height = 512, width = 512)]
+            generate_btn.click(fn = identify_image, inputs= inputs, outputs = outputs)
 
 ## for collab
 # demo.launch(debug=True) 
