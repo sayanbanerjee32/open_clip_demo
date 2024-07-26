@@ -50,7 +50,7 @@ def identify_image(input_description):
 
 with gr.Blocks() as demo:
     gr.HTML("<h1 align = 'center'> Image Search </h1>")
-    gr.HTML("<h4 align = 'center'> Idenitify the most suitable image for description provided.</h4>")
+    gr.HTML("<h4 align = 'center'> Identify the most suitable image for description provided.</h4>")
     
     gr.Gallery(value = original_images,
         label="Images to search from", show_label=True, elem_id="gallery"
@@ -76,7 +76,7 @@ with gr.Blocks() as demo:
                          height = 512, width = 512)]
     generate_btn.click(fn = identify_image, inputs= inputs, outputs = outputs)
 
-# for collab
+## for collab
 # demo.launch(debug=True) 
 
 if __name__ == '__main__':
